@@ -1,0 +1,89 @@
+; command easein_bottom $length $amount
+zoom_bottom = 0
+@
+@
+zoom_bottom = -$amount/6
+@
+zoom_bottom = -$amount/4
+@
+zoom_bottom = -$amount/3
+@
+zoom_bottom = -$amount/3
+@
+zoom_bottom = 0
+; end command
+
+; command easeout_bottom $length $amount
+zoom_bottom = 0
+@
+zoom_bottom = $amount/3
+@
+zoom_bottom = $amount/3
+@
+zoom_bottom = $amount/4
+@
+zoom_bottom = $amount/6
+@
+@
+zoom_bottom = 0
+; end command
+
+; command easein_top $length $amount
+zoom_top = 0
+@
+@
+zoom_top = -$amount/6
+@
+zoom_top = -$amount/4
+@
+zoom_top = -$amount/3
+@
+zoom_top = -$amount/3
+@
+zoom_top = 0
+; end command
+
+; command easeout_top $length $amount
+zoom_top = 0
+@
+zoom_top = $amount/3
+@
+zoom_top = $amount/3
+@
+zoom_top = $amount/4
+@
+zoom_top = $amount/6
+@
+@
+zoom_top = 0
+; end command
+
+; command easein_side $length $amount
+zoom_side = 0
+@
+@
+zoom_side = -$amount/6
+@
+zoom_side = -$amount/4
+@
+zoom_side = -$amount/3
+@
+zoom_side = -$amount/3
+@
+zoom_side = 0
+; end command
+
+; command easeout_side $length $amount
+zoom_side = 0
+@
+zoom_side = $amount/3
+@
+zoom_side = $amount/3
+@
+zoom_side = $amount/4
+@
+zoom_side = $amount/6
+@
+@
+zoom_side = 0
+; end command
