@@ -5,11 +5,14 @@ Currently this program is in "pre-alpha" stage, where everything is subject to c
 
 ## Security Warning
 Currently this program uses JavaScript's `eval` to evaluate expressions, and `; import` command can import any file in the system.
-While there is a simple filter to only allow simple expressions, it might be possible to exploit this `eval` to execute arbitary scripts.
+While there is a simple filter to only allow simple expressions before doing an `eval`, it might be possible to exploit this `eval` to execute arbitrary scripts.
+
 Therefore, before executing a KLE script, examine it (and maybe `.ksh` too!) to make sure that no spooky thing is going on.
 
-Usage of `eval` will be removed once the project becomes active, and arbitrary `; import` will be disabled (except for `stdlib`),
-but for now, be careful on these.
+Once the project becomes active, usage of `eval` will be removed and arbitrary `; import` will be disabled (except for `stdlib` and scripts in same folder),
+but for now, be careful on these possible security problems.
+
+A fun task: craft a `.kle` script capable of arbitrary code executon when applied on a `.ksh` chart with a call to a command `; main 1`.
 
 ## How to use a script
 A KLE script consists of various 'command's, which modifiy zoom values of a chart.
@@ -36,7 +39,7 @@ The KLE program can be executed like this: `node bin.js in.ksh script.kle out.ks
 When this is executed, `script.kle` will be applied on `in.ksh`, which will create `out.ksh`.
 It is recommended not to include any notes (especially lasers) in `in.ksh`, since parsing `.ksh` files are not yet stable.
 
-## How to create a script
+## How to write a script
 Every command definition begin with a line `; command name-of-command $length $arg1 $arg2 ...`, and end with a line `; end command`.
 Below is an example of a command definition.
 ```
