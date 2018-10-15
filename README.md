@@ -32,7 +32,9 @@ Lengths are represented in terms of amount of 192nd notes or in beats like `{3/8
 
 This is all you can do in a `.ksh` chart. You need to define commands in a `.kle` script file, then give them to the KLE program.
 The KLE program can be executed like this: `node bin.js in.ksh script.kle out.ksh`.
+
 When this is executed, `script.kle` will be applied on `in.ksh`, which will create `out.ksh`.
+It is recommended not to include any notes (especially lasers) in `in.ksh`, since parsing `.ksh` files are not yet stable.
 
 ## How to create a script
 Every command definition begin with a line `; command name-of-command $length $arg1 $arg2 ...`, and end with a line `; end command`.
