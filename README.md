@@ -79,6 +79,10 @@ If a script does not satisfy this constraint, then sudden zoom changes will auto
 Therefore, "global" changes are impossible with commands; you must specify them by manually editing zoom values in a `.ksh` chart.
 However, even with this constraint, a lot of interesting effects can be achieved.
 
+## Statements
+### if-else
+### set
+
 ## Standard library
 Using `; import stdlib`, you can import the standard library to your script.
 The standard library contains many useful effects.
