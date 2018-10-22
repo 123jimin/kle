@@ -1,4 +1,4 @@
-; command easein_bottom $length $amount
+;command easein_bottom $length $amount
 zoom_bottom = 0
 @
 @
@@ -11,9 +11,9 @@ zoom_bottom = -$amount*5/12
 zoom_bottom = -$amount/3
 @
 zoom_bottom = 0
-; end command
+;end command
 
-; command easeout_bottom $length $amount
+;command easeout_bottom $length $amount
 zoom_bottom = 0
 @
 zoom_bottom = $amount/3
@@ -26,9 +26,9 @@ zoom_bottom = $amount/3
 @
 @
 zoom_bottom = 0
-; end command
+;end command
 
-; command easein_top $length $amount
+;command easein_top $length $amount
 zoom_top = 0
 @
 @
@@ -41,9 +41,9 @@ zoom_top = -$amount*5/12
 zoom_top = -$amount/3
 @
 zoom_top = 0
-; end command
+;end command
 
-; command easeout_top $length $amount
+;command easeout_top $length $amount
 zoom_top = 0
 @
 zoom_top = $amount/3
@@ -56,9 +56,9 @@ zoom_top = $amount/3
 @
 @
 zoom_top = 0
-; end command
+;end command
 
-; command easein_side $length $amount
+;command easein_side $length $amount
 zoom_side = 0
 @
 @
@@ -71,9 +71,9 @@ zoom_side = -$amount*5/12
 zoom_side = -$amount/3
 @
 zoom_side = 0
-; end command
+;end command
 
-; command easeout_side $length $amount
+;command easeout_side $length $amount
 zoom_side = 0
 @
 zoom_side = $amount/3
@@ -86,4 +86,4 @@ zoom_side = $amount/3
 @
 @
 zoom_side = 0
-; end command
+;end command
