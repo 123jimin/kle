@@ -76,9 +76,38 @@ If you wish to include spaces because of readability, you can wrap arguments in 
 ;flick $length ($amount*2 + $length/10)
 ```
 
-`zoom_side`, `zoom_top`, and `zoom_bottom` are pre-defined commands which modify zoom values, so you can use it like `; zoom_side 50`
+`zoom_side`, `zoom_top`, and `zoom_bottom` are pre-defined commands which modify relative zoom values, so you can use it like `; zoom_side 50`
 to increase the side zoom value by 50, or `; zoom_side 0 100` to make a sudden zoom change.
 However, these three are very special since you can also use it in a more conventional way: `zoom_side = 0 100`.
+
+Here's an another example for a command where stdlib easeout and easein commands are used:
+```
+// You can use comments like this.
+// Imports the standard library (explained below)
+;import stdlib
+
+;command bounce $length $amount
+// Initial relative zoom values are zero.
+zoom_bottom = 0
+zoom_top = 0
+// Gives an 'ease-out' effect...
+// (Lanes zoom rapidly at first then moves slower)
+;easeout_bottom $length/2 $amount
+;easeout_top $length/2 $amount
+@
+// Zoom values achieve maximum values.
+zoom_bottom = $amount
+zoom_top = $amount
+// Gives an 'ease-in' effect...
+// (Opposite of ease-out)
+;easein_bottom $length/2 -$amount
+;easein_top $length/2 -$amount
+@
+// Final relative zoom values are zero again.
+zoom_bottom = 0
+zoom_top = 0
+;end command
+```
 
 Currently there is a significant constraint for every command: **every zoom values are relative, and they begin and end with 0**!
 If a script does not satisfy this constraint, then sudden zoom changes will automatically be added.
@@ -109,17 +138,55 @@ For example, the following code prints `42 hello`:
 ;end if
 ```
 ### repeat
-(Under developement)
-
 `;repeat N` ... `;end repeat` repeats given statements for a given time.
 `;repeat A B` is identical to `;repeat B/A`, but emits an error if `B` is not divisible by `A`.
+
+This is an implementation of FizzBuzz in KLE.
+```
+;set $i 1
+;repeat 100
+  ;if ($i % 15 == 0)
+    ;print FizzBuzz
+  ;else if ($i % 3 == 0)
+    ;print Fizz
+  ;else if ($i % 5 == 0)
+    ;print Buzz
+  ;else
+    ;print $i
+  ;end if
+  ;set $i $i+1
+;end repeat
+```
 ### while
 (Under developement)
 
 `;while (exp)` ... `;end while` repeats while `(exp)` evaluates to true.
+
+### call
+`;call $a $b` executes a command whose name is stored in `$a`.
+
+This is *not* a pre-defined command but a *statement*.
+If this were a command, then lines like `;call zoom_top 10` would be useless.
+(Again, every zoom values in a command must begin and end with 0!)
+
+### tick
+`;tick` is identical to `@` or `0000|00|--`.
+Actually latter two are aliases to the `;tick` statement.
+
 ## Standard library
 Using `;import stdlib`, you can import the standard library to your script.
 The standard library contains many useful effects.
+
+### ease-in, ease-out
+```
+;easein_bottom $length $amount
+;easein_top $length $amount
+;easein_side $length $amount
+
+;easeout_bottom $length $amount
+;easeout_top $length $amount
+;easeout_side $length $amount
+```
 
 ## Pre-defined commands
 Other than `zoom_*` commands, there are few other pre-defined commands.
