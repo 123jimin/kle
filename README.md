@@ -109,6 +109,15 @@ zoom_top = 0
 ;end command
 ```
 
+### How a command is executed
+In KLE, calls to commands in a command is *not* processed immediately.
+Instead, following stuffs happen when a command is being executed.
+1. **Statements** in a command are processed.
+2. While executing statements, calls to other **commands** are stored in a list.
+3. After all statements are executed, **zoom values** are applied on a chart.
+  - Timing is computed using \# of lines being encountered and the first argument `$length`.
+4. After zoom values are applied, stored commands in the list are executed one by one.
+
 Currently there is a significant constraint for every command: **every zoom values are relative, and they begin and end with 0**!
 If a script does not satisfy this constraint, then sudden zoom changes will automatically be added.
 Therefore, "global" changes are impossible with commands; you must specify them by manually editing zoom values in a `.ksh` chart.
@@ -169,9 +178,9 @@ This is *not* a pre-defined command but a *statement*.
 If this were a command, then lines like `;call zoom_top 10` would be useless.
 (Again, every zoom values in a command must begin and end with 0!)
 
-### tick
-`;tick` is identical to `@` or `0000|00|--`.
-Actually latter two are aliases to the `;tick` statement.
+### line
+`;line` is identical to `@` or `0000|00|--`.
+Actually latter two are aliases to the `;line` statement.
 
 ## Standard library
 Using `;import stdlib`, you can import the standard library to your script.
@@ -186,6 +195,23 @@ The standard library contains many useful effects.
 ;easeout_bottom $length $amount
 ;easeout_top $length $amount
 ;easeout_side $length $amount
+```
+These commands can be used to convert a linear transition into ease-in or ease-out transition.
+
+Example:
+Following portion of a `.ksh` chart gives an ease-in effect for `zoom_top` from 40 to 100,
+while ease-out effect will be given for `zoom_bottom` from 50 to 0.
+```
+--
+t=4/4
+zoom_top=40
+zoom_bottom=50
+;easein_top {4/4} 60
+;easeout_bottom {4/4} -50
+0000|00|--
+zoom_top=100
+zoom_bottom=0
+--
 ```
 
 ## Pre-defined commands
