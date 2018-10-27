@@ -182,6 +182,12 @@ If this were a command, then lines like `;call zoom_top 10` would be useless.
 `;line` is identical to `@` or `0000|00|--`.
 Actually latter two are aliases to the `;line` statement.
 
+### process
+`;process on` or `;process off` turns on/off processing KLE commands.
+These are useful for quick developement of a chart.
+
+This command only works when written in a `.ksh` chart file.
+
 ## Standard library
 Using `;import stdlib`, you can import the standard library to your script.
 The standard library contains many useful effects.
