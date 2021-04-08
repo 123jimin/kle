@@ -1,7 +1,5 @@
 # KLE
-KLE (KShootMania Lane Effector) is a program made by JiminP (@123jimin) to simplify adding lane zoom effects to KShootMania charts.
-
-Currently this program is in "pre-alpha" stage, where everything is subject to change, subject to break, and made using duct tapes.
+KLE (KSH Lane Effector) is a program made by JiminP (@123jimin) to simplify adding lane visual effects to `.ksh` charts.
 
 ## Security Warning
 Currently this program uses JavaScript's `eval` to evaluate expressions, and `; import` command can import any file in the system.
@@ -9,10 +7,8 @@ While there is a simple filter to only allow simple expressions before doing an 
 
 Therefore, before executing a KLE script, examine it (and maybe `.ksh` too!) to make sure that no spooky thing is going on.
 
-Once the project becomes active, usage of `eval` will be removed and arbitrary `; import` will be disabled (except for `stdlib` and scripts in same folder),
+Once the project becomes serious, usage of `eval` will be removed and arbitrary `; import` will be disabled (except for `stdlib` and scripts in same folder),
 but for now, be careful on these possible security problems.
-
-An exercise which may be impossible: craft a `.kle` script capable of arbitrary code executon when applied on a `.ksh` chart with a call to a command `;main 1`.
 
 ## How to use a script
 A KLE script consists of various 'command's, which modifiy zoom values of a chart.
@@ -34,7 +30,7 @@ The first argument of the command is *always* the length of the region which the
 Lengths are represented in terms of amount of 192nd notes or in beats like `{3/8}` (three 8th notes in this case).
 
 This is all you can do in a `.ksh` chart. You need to define commands in a `.kle` script file, then give them to the KLE program.
-The KLE program can be executed like this: `node bin.js in.ksh script.kle out.ksh`.
+The KLE program can be executed like this: `node bin.js in.ksh out.ksh -k script.kle`.
 
 When this is executed, `script.kle` will be applied on `in.ksh`, which will create `out.ksh`.
 It is recommended not to include any notes (especially lasers) in `in.ksh`, since parsing `.ksh` files are not yet stable.
@@ -111,7 +107,7 @@ zoom_top = 0
 
 ### How a command is executed
 In KLE, calls to commands in a command is *not* processed immediately.
-Instead, following stuffs happen when a command is being executed.
+Instead, following steps happen when a command is being executed.
 1. **Statements** in a command are processed.
 2. While executing statements, calls to other **commands** are stored in a list.
 3. After all statements are executed, **zoom values** are applied on a chart.
@@ -167,8 +163,6 @@ This is an implementation of FizzBuzz in KLE.
 ;end repeat
 ```
 ### while
-(Under developement)
-
 `;while (exp)` ... `;end while` repeats while `(exp)` evaluates to true.
 
 ### call

@@ -1,0 +1,1 @@
+node ../bin.js test.ksh test-out.ksh -k test.kle

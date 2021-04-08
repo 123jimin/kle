@@ -68,6 +68,10 @@
 ;easein $length zoom_side $amount
 ;end command
 
+;command easein_center_split $length $amount
+;easein $length center_split $amount
+;end command
+
 ;command easeout_bottom $length $amount
 ;easeout $length zoom_bottom $amount
 ;end command
@@ -78,4 +82,8 @@
 
 ;command easeout_side $length $amount
 ;easeout $length zoom_side $amount
+;end command
+
+;command easeout_center_split $length $amount
+;easeout $length center_split $amount
 ;end command
