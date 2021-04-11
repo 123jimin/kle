@@ -1,1 +1,1 @@
-node ../bin.js test.ksh test-out.ksh -k test.kle
+node ../bin.js test.ksh test-out.ksh -k test.kle -l test.lua

@@ -24,6 +24,7 @@ let flag_names = {
 process.argv.slice(2).forEach((arg) => {
 	if(curr_flag) {
 		flag_args[curr_flag] = arg;
+		curr_flag = '';
 		arg = '';
 		return;
 	}
@@ -52,5 +53,5 @@ if(out_file_name) {
 	fs.writeFileSync(out_file_name, proc.ksh_result, 'utf-8');
 }
 if(lua_file_name) {
-	fs.writeFileSync(out_file_name, proc.lua_result, 'utf-8');
+	fs.writeFileSync(lua_file_name, proc.lua_result, 'utf-8');
 }
