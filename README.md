@@ -35,6 +35,9 @@ The KLE program can be executed like this: `node bin.js in.ksh out.ksh -k script
 When this is executed, `script.kle` will be applied on `in.ksh`, which will create `out.ksh`.
 It is recommended not to include any notes (especially lasers) in `in.ksh`, since parsing `.ksh` files are not yet stable.
 
+## Lua output
+The ksh chart can be exported to a Lua script describing the chart, by specifying `-l` flag like this: `node bin.js in.ksh out.ksh -l chart.lua`.
+
 ## How to write a script
 Every command definitions begin with a line `;command name-of-command $length $arg1 $arg2 ...`, and end with a line `;end command`.
 
@@ -55,7 +58,7 @@ zoom_side = 0
 ;end command
 ```
 `@` (or you may use `0000|00|--`) is used to represent a chart line. Since there are six `@`s in the `flick` command, a `@` represent sixth of `$length`.
-As you can see, every variables begin with a dollar sign. Also, you can specify default values for arguments like `$amount=50`.
+As you can see, every variable begin with a dollar sign. Also, you can specify default values for arguments like `$amount=50`.
 
 You can include other commands in a command definition like this:
 ```
