@@ -172,8 +172,7 @@ This is an implementation of FizzBuzz in KLE.
 `;call $a $b` executes a command whose name is stored in `$a`.
 
 This is *not* a pre-defined command but a *statement*.
-If this were a command, then lines like `;call zoom_top 10` would be useless.
-(Again, every zoom values in a command must begin and end with 0!)
+If this were a command, then lines like `;call zoom_top 10` would be useless, because every zoom values in a command must begin and end with 0.
 
 ### line
 `;line` is identical to `@` or `0000|00|--`.
